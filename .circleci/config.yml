@@ -3,7 +3,7 @@ version: 2
 jobs:
     "erlang-22.3.1":
         docker:
-            - image: fpesti/lorawan-docker-primary:22.3.1
+            - image: egertak/lorawan-docker-primary:22.3.1
         resource_class: small      
         steps:
             - checkout
@@ -18,7 +18,7 @@ jobs:
                 
     "erlang-23.0-rc2":
         docker:
-            - image: fpesti/lorawan-docker-primary:23.0-rc2
+            - image: egertak/lorawan-docker-primary:23.0-rc2
         resource_class: medium      
         steps:
             - checkout
