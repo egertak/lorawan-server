@@ -1,0 +1,38 @@
+version: 2
+​
+jobs:
+    "erlang-22.3.1":
+        docker:
+            - image: fpesti/lorawan-docker-primary:22.3.1
+        resource_class: small      
+        steps:
+            - checkout
+            - run: 
+                name: Build LoraWan server
+                command: | 
+                  make
+                  make release
+            - run: 
+                name: Execute Unit tests
+                command: make test
+                
+    "erlang-23.0-rc2":
+        docker:
+            - image: fpesti/lorawan-docker-primary:23.0-rc2
+        resource_class: medium      
+        steps:
+            - checkout
+            - run: 
+                name: Build LoraWan server
+                command: | 
+                  make
+                  make release
+            - run: 
+                name: Execute Unit tests
+                command: make test
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "erlang-22.3.1"
+      - "erlang-23.0-rc2"
